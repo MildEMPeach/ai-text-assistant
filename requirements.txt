@@ -1,0 +1,6 @@
+PyQt6==6.5.0
+pywin32==306
+requests==2.31.0
+python-dotenv==1.0.0
+Pillow==10.0.0
+keyboard==0.13.5 
