@@ -102,7 +102,7 @@ TARGET_LANGUAGE=English
 
 ### 文件结构
 ```
-ai-summary-assistant/
+ai-text-assistant/
 ├── text_summary_assistant.py  # 主程序文件
 ├── requirements.txt           # 依赖包列表
 ├── .env                      # 环境配置文件
