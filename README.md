@@ -134,8 +134,15 @@ ai-text-assistant/
 
 ### 常见问题
 
+**Q: 程序无法启动，出现 "ImportError: DLL load failed while importing QtCore" 错误？**
+A: 这是PyQt6版本兼容性问题，请按以下步骤解决：
+1. 完全卸载现有PyQt6：`pip uninstall PyQt6 PyQt6-Qt6 PyQt6-sip -y`
+2. 重新安装兼容版本：`pip install PyQt6==6.4.2 PyQt6-Qt6==6.4.2 PyQt6-sip==13.4.0`
+3. 如果仍有问题，请安装 [Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+4. 详细解决方案请查看 [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+
 **Q: 程序无法启动？**
-A: 检查 Python 版本和依赖包是否正确安装
+A: 检查 Python 版本（推荐3.8-3.11）和依赖包是否正确安装
 
 **Q: 无法检测到选中的文本？**
 A: 确保文本已正确选中，程序会自动检测并显示图标
@@ -148,6 +155,9 @@ A: 检查网络连接和 API 密钥配置
 
 **Q: 翻译结果不准确？**
 A: 可以在设置中调整目标语言，或重新选择文本
+
+### 详细故障排除
+如果遇到PyQt6相关问题，请查看详细的 [故障排除指南](TROUBLESHOOTING.md)
 
 ### 日志查看
 程序运行时会在控制台输出详细日志，有助于问题诊断。
