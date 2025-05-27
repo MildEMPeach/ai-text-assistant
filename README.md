@@ -150,6 +150,13 @@ A: 确保文本已正确选中，程序会自动检测并显示图标
 **Q: 图标出现后立即消失？**
 A: 这个问题已经修复，图标现在会稳定显示直到您点击或右键隐藏
 
+**Q: 出现 "Client.init() got an unexpected keyword argument 'proxies'" 错误？**
+A: 这是 openai 库与 httpx 库版本兼容性问题。**已修复**！解决方法：
+1. **推荐方案**：重新安装依赖 `pip install -r requirements.txt --force-reinstall`
+2. **手动修复**：`pip install openai==1.55.3 httpx==0.27.2 --force-reinstall`
+3. 如果在 Google Colab 中，安装后需要重启运行时
+4. 这个问题在 openai 1.55.3+ 版本中已经完全解决
+
 **Q: API 调用失败？**
 A: 检查网络连接和 API 密钥配置
 
