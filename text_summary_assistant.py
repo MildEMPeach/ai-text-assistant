@@ -8,6 +8,7 @@ import requests
 import time
 import markdown
 import pyautogui
+import keyboard
 from dotenv import load_dotenv
 from openai import OpenAI
 from PyQt6.QtWidgets import (QApplication, QSystemTrayIcon, QMenu, 
