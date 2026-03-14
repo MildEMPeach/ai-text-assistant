@@ -1,0 +1,37 @@
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: 'Avenir Next', 'Segoe UI Variable Text', sans-serif;
+}
+
+#triggerBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: linear-gradient(140deg, #176f76 0%, #c87a2b 100%);
+  box-shadow: 0 8px 22px rgba(16, 30, 36, 0.3);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+#triggerBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 28px rgba(16, 30, 36, 0.35);
+}

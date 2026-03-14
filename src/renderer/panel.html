@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Text Assistant</title>
+    <link rel="stylesheet" href="./panel.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+
+    <main class="app-shell">
+      <header class="top-bar card">
+        <div>
+          <p class="eyebrow">Desktop AI Assistant</p>
+          <h1>选中文本，一键总结/翻译</h1>
+        </div>
+        <p id="statusText" class="status">就绪</p>
+      </header>
+
+      <section class="content-grid">
+        <article class="card input-card">
+          <div class="card-head">
+            <h2>原文</h2>
+            <span class="hint">支持粘贴或自动注入</span>
+          </div>
+          <textarea id="sourceText" placeholder="选中文本后复制，或直接粘贴到这里..."></textarea>
+
+          <div class="action-row">
+            <button data-action="summarize" class="primary">总结</button>
+            <button data-action="translate">翻译</button>
+            <button data-action="custom">自定义处理</button>
+          </div>
+
+          <label class="custom-label" for="customPrompt">自定义提示词</label>
+          <textarea
+            id="customPrompt"
+            class="custom-prompt"
+            placeholder="例如：提炼成 3 条执行建议，并给出潜在风险"
+          ></textarea>
+        </article>
+
+        <article class="card output-card">
+          <div class="card-head">
+            <h2>结果</h2>
+            <button id="copyBtn" class="ghost">复制</button>
+          </div>
+          <pre id="resultOutput">等待执行...</pre>
+          <p id="resultMeta" class="meta">-</p>
+        </article>
+      </section>
+
+      <section class="card settings-card">
+        <div class="card-head">
+          <h2>设置</h2>
+          <span class="hint">支持多模型 API</span>
+        </div>
+
+        <form id="settingsForm" class="settings-grid">
+          <label>
+            Provider
+            <select id="providerType">
+              <option value="openai-compatible">OpenAI Compatible</option>
+              <option value="anthropic">Anthropic</option>
+              <option value="gemini">Gemini</option>
+              <option value="deepseek">DeepSeek</option>
+            </select>
+          </label>
+
+          <label>
+            Model
+            <input id="modelName" type="text" placeholder="gpt-4o-mini / deepseek-chat / claude-3-5-sonnet / gemini-1.5-flash" />
+          </label>
+
+          <label>
+            API Key
+            <input id="apiKey" type="password" placeholder="sk-..." />
+          </label>
+
+          <label>
+            Base URL（可选）
+            <input id="baseUrl" type="text" placeholder="https://api.openai.com/v1" />
+          </label>
+
+          <label>
+            翻译目标语言
+            <input id="targetLanguage" type="text" placeholder="Chinese / English / Japanese" />
+          </label>
+
+          <button id="saveSettings" type="submit" class="primary">保存设置</button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="./panel.ts"></script>
+  </body>
+</html>
