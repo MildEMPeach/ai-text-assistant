@@ -1,0 +1,269 @@
+:root {
+  --bg: #f5f7f2;
+  --ink: #1c2a30;
+  --card: rgba(255, 255, 255, 0.82);
+  --line: rgba(28, 42, 48, 0.12);
+  --accent: #176f76;
+  --accent-2: #c87a2b;
+  --warn: #a14f3d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Avenir Next', 'Segoe UI Variable Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 10% -20%, rgba(23, 111, 118, 0.17), transparent),
+    radial-gradient(900px 500px at 100% 0%, rgba(200, 122, 43, 0.2), transparent),
+    linear-gradient(160deg, #f6f8f4 0%, #e8ece6 100%);
+  padding: 22px;
+}
+
+.ambient {
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(18px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.ambient-a {
+  width: 280px;
+  height: 280px;
+  background: rgba(23, 111, 118, 0.3);
+  right: -70px;
+  top: -80px;
+}
+
+.ambient-b {
+  width: 260px;
+  height: 260px;
+  background: rgba(200, 122, 43, 0.25);
+  left: -90px;
+  bottom: -60px;
+}
+
+.app-shell {
+  position: relative;
+  z-index: 2;
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  backdrop-filter: blur(10px);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(23, 34, 40, 0.08);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(28, 42, 48, 0.58);
+}
+
+h1 {
+  margin: 6px 0 0;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.status {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(23, 111, 118, 0.13);
+  color: #10565c;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.status.is-error {
+  background: rgba(161, 79, 61, 0.16);
+  color: var(--warn);
+}
+
+.status.is-busy {
+  background: rgba(200, 122, 43, 0.16);
+  color: #9a5f20;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.input-card,
+.output-card,
+.settings-card {
+  padding: 18px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.hint {
+  font-size: 12px;
+  color: rgba(28, 42, 48, 0.58);
+}
+
+textarea,
+input,
+select,
+button {
+  font: inherit;
+}
+
+textarea,
+input,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
+}
+
+#sourceText {
+  min-height: 220px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.custom-label {
+  display: block;
+  margin: 10px 0 6px;
+  font-size: 13px;
+  color: rgba(28, 42, 48, 0.74);
+}
+
+.custom-prompt {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.action-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  background: rgba(28, 42, 48, 0.08);
+  color: var(--ink);
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.primary {
+  background: linear-gradient(140deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #fff;
+}
+
+.ghost {
+  background: rgba(23, 111, 118, 0.12);
+  color: #10565c;
+}
+
+#resultOutput {
+  margin: 0;
+  min-height: 320px;
+  max-height: 480px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  white-space: pre-wrap;
+  line-height: 1.55;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.meta {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: rgba(28, 42, 48, 0.58);
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.settings-grid label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+
+#saveSettings {
+  align-self: stretch;
+}
+
+@media (max-width: 960px) {
+  body {
+    padding: 14px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
