@@ -1,13 +1,26 @@
 import { app, BrowserWindow } from 'electron';
 import { join } from 'node:path';
 
-const DEV_SERVER_URL = 'http://localhost:5173';
+import log from '../logger';
+
+function getDevServerUrl(): string | null {
+  const url = process.env.ELECTRON_RENDERER_URL?.trim();
+  return url ? url.replace(/\/$/, '') : null;
+}
 
 export async function loadRendererPage(window: BrowserWindow, page: string): Promise<void> {
-  if (!app.isPackaged) {
-    await window.loadURL(`${DEV_SERVER_URL}/${page}`);
+  const rendererFile = join(__dirname, '../../renderer', page);
+  const devServerUrl = getDevServerUrl();
+
+  if (app.isPackaged || !devServerUrl) {
+    await window.loadFile(rendererFile);
     return;
   }
 
-  await window.loadFile(join(__dirname, '../../renderer', page));
+  try {
+    await window.loadURL(`${devServerUrl}/${page}`);
+  } catch (error) {
+    log.warn(`Dev server unavailable, falling back to built renderer for ${page}`, error);
+    await window.loadFile(rendererFile);
+  }
 }

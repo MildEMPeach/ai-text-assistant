@@ -2,6 +2,7 @@ import { BrowserWindow } from 'electron';
 import { join } from 'node:path';
 
 import { IPC_CHANNELS } from '../../shared/ipc';
+import { getAppIconPath } from '../app-icon';
 import type { SelectionPayload } from '../../shared/types';
 import { loadRendererPage } from './window-utils';
 
@@ -22,6 +23,7 @@ export class PanelWindow {
       minWidth: 780,
       minHeight: 600,
       show: false,
+      icon: getAppIconPath() ?? undefined,
       backgroundColor: '#0d1a1f',
       title: 'AI Text Assistant',
       webPreferences: {

@@ -1,6 +1,8 @@
 import { Menu, Tray, nativeImage } from 'electron';
 
-function createTrayIcon() {
+import { loadAppIcon } from './app-icon';
+
+function createFallbackTrayIcon() {
   const svg = `
   <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -15,6 +17,15 @@ function createTrayIcon() {
 
   const dataUrl = `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
   return nativeImage.createFromDataURL(dataUrl).resize({ width: 18, height: 18 });
+}
+
+function createTrayIcon() {
+  const icon = loadAppIcon();
+  if (!icon.isEmpty()) {
+    return icon.resize({ width: 18, height: 18 });
+  }
+
+  return createFallbackTrayIcon();
 }
 
 export class AppTray {
